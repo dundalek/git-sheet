@@ -1,0 +1,138 @@
+body {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin: 8px;
+    padding: 0px;
+}
+h1 {
+    text-align: right;
+    color: #1C4EFF;
+    font-weight: normal;
+    width: 600px;
+    margin: 10px;
+    font-size: 28px;
+}
+a {
+    color: #5A5A5A;
+    text-decoration: underline;
+}
+a:hover {
+    background-color: #1C4EFF;
+    color: #fff;
+}
+#content {
+/*    -moz-column-count: 3;
+    -moz-column-gap: 1.5em;
+    -moz-column-rule: 1px solid #E0E0E0;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 1.5em;
+    -webkit-column-rule: 1px solid #E0E0E0;*/
+    clear: both;
+    border-top: 1px solid #1C51FF;
+    margin-top: 30px;
+    padding-top: 30px;
+}
+.column {
+    float: left;
+    padding: 0 5px;
+}
+.group {
+    width: 300px;
+    margin: 0;
+    margin-bottom: 30px;
+}
+.group>.label {
+    font-size: 24px;
+    color: #9D9D9D;
+}
+.entry {
+    padding: 5px;
+
+}
+.cmd {
+/*             white-space: pre; */
+    display: none;
+}
+.command {
+    color: #1C4EFF;
+    font-size: 15px;
+    padding: 0 5px;
+}
+.note {
+    color: #9D9D9D;
+    font-size: 80%;
+    text-align: right;
+}
+.graybox {
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    background-color: #F0F0F0;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+.blue {
+    color: #1C4EFF;
+}
+#about {
+    width: 610px;
+}
+#header>* {
+    float: left;
+}
+#header input#filter {
+    margin-top: 18px;
+    border: 1px solid #9D9D9D;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 2px 5px;
+    color: #5A5A5A;
+}
+#intro {
+    clear: both;
+    border-top: 1px solid #1C51FF;
+    padding: 5px 0;
+}
+#intro .group {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    float: left;
+}
+#intro .command .cmd {
+    display: inline;
+}
+#intro>div {
+    padding: 0 5px;
+}
+.command:hover {
+    background-color: #FFF9A0;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.command input[type="text"] {
+    border: 1px solid transparent;
+    background: transparent;
+    width: 80px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    padding: 0 2px;
+    font-size: 15px;
+    color: #5A5A5A;
+}
+.command:hover input[type="text"], .command:hover input[type="text"]:active {
+    background: white;
+    border: 1px solid #9D9D9D;
+}
+#intro .command {
+    display: inline-block;
+}
+.manpage {
+    float: right;
+    visibility: hidden;
+    text-decoration: none;
+    font-weight: bold;
+}
+.command:hover .manpage {
+    visibility: visible;
+}

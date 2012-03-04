@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Interactive Git Cheat Sheet</title>
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="jquery.autoresize.js"></script>
+    <script type="text/javascript" src="commands.js"></script>
+    <script type="text/javascript" src="sheet.js"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            renderSheet($('#content'), command_data);
+            bindHandlers();
+        });
+    </script>
+
+    <script type="text/html" id="group_tmpl">
+        <div class="group">
+            <div class="label">{{=label}}</div>
+            {{ for (var j = 0; j < commands.length; j++) { }}
+                {{= tmpl('entry_tmpl', {command: commands[j], cmds: extractCommands(commands[j])}) }}
+            {{ } }}
+        </div>
+    </script>
+
+    <script type="text/html" id="entry_tmpl">
+        <div class="entry{{=command['class'] ? ' '+command['class'] : ''}}">
+            <div class="label">{{=command.label}}</div>
+            {{ for (var k = 0; k < cmds.length; k++) { }}
+               {{= tmpl('command_tmpl', {cmd: cmds[k]}) }}
+            {{ } }}
+        </div>
+    </script>
+
+    <script type="text/html" id="command_tmpl">
+        <div class="command">
+            <div class="cmd">{{=cmd.command}}</div>
+            <a href="{{=manualLink(cmd.command)}}" class="manpage">?</a>
+            <div class="control">
+                {{=controlReplace(cmd.command)}}
+            </div>
+            {{ if ("note" in cmd) { }}
+                <div class="note">{{=cmd.note}}</div>
+            {{ } }}
+        </div>
+    </script>
+
+  </head>
+  <body>
+        <div id="header">
+            <h1>Interactive Git Cheat Sheet</h1>
+            <input type="text" id="filter" placeholder="filter...">
+        </div>
+
+        <div id="intro">
+            <div class="group" id="about">
+                <div class="label">Instructions</div>
+
+                <p>
+                    <span style="float:right; text-align: right; margin-right: 15px; margin-top: 10px;">
+                        visit <a href="http://zrusin.blogspot.com/2007/09/git-cheat-sheet.html">original</a><br>
+                        source on <a href="#">github</a>
+                    </span>
+                    Hover over a command and adjust values in inputs.<br>
+                    Click on the command and a box will pop up.<br>
+                    Then you can copy the result to clipboard.
+
+
+                </p>
+                <div class="graybox">
+                Remember: <div class="command"><div class="cmd">git command --help</div></div><br>
+                Global Git configuration is stored in $HOME/.gitconfig (<div class="command"><div class="cmd">git config --help</div></div>)
+                </div>
+
+            </div>
+
+            <div class="group">
+                <div class="label">Git Basics</div>
+                <p>
+                    <span class="blue">master</span> : default development branch<br>
+                    <span class="blue">origin</span> : default upstream repository<br>
+                    <span class="blue">HEAD</span> : current branch<br>
+                    <span class="blue">HEAD^</span> : parent of HEAD<br>
+                    <span class="blue">HEAD~4</span> : the great-great grandparent of HEAD<br>
+                </p>
+            </div>
+
+            <div class="group">
+                <div class="label">Cheat Sheet Notation</div>
+                <p>
+                    <span class="blue">$id</span> : notation used in this sheet to represent either a commit id, branch or a tag name<br>
+                    <span class="blue">$file</span> : arbitrary file name<br>
+                    <span class="blue">$branch</span> : arbitrary branch name<br>
+                </p>
+            </div>
+
+        </div>
+
+        <div id="content"></div>
+
+  </body>
+</html>
